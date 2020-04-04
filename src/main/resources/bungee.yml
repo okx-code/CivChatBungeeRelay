@@ -1,0 +1,4 @@
+name: CivChatBungeeRelay
+version: 1.0
+author: Okx
+main: sh.okx.civchatbungeerelay.CivChatBungeeRelayPlugin
