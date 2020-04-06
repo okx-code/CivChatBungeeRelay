@@ -6,6 +6,7 @@ import com.google.common.io.ByteStreams;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.config.ServerInfo;
@@ -78,7 +79,10 @@ public class CivChatBungeePluginMessageListener implements Listener {
     reply.writeInt(filtered.size());
 
     for (ProxiedPlayer player : filtered) {
-      reply.writeUTF(player.getUniqueId().toString());
+
+      UUID uuid = player.getUniqueId();
+      reply.writeLong(uuid.getMostSignificantBits());
+      reply.writeLong(uuid.getLeastSignificantBits());
     }
 
     dest.sendData("CIVCHAT", reply.toByteArray());
