@@ -71,7 +71,7 @@ public class CivChatBungeePluginMessageListener implements Listener {
 
     Set<ProxiedPlayer> filtered = new HashSet<>();
     for (ProxiedPlayer player : players) {
-      if (player.getServer().getInfo() != dest) {
+      if (player != null && player.getServer() != null && player.getServer().getInfo() != dest) {
         filtered.add(player);
       }
     }
